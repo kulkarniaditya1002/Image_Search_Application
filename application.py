@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 from PIL import Image
+import os
 
 app = Flask(__name__)
 
@@ -27,8 +28,7 @@ def upload():
 
     # Iterate over the uploaded files and save them to the desired location
     for file in uploaded_files:
-        filename = secure_filename(file.filename)
-        file.save(os.path.join('/path/to/save/folder', filename))
+        file.save(os.path.join('/image_search', file.filename))
 
 # Using Inception V3
 import tensorflow as tf
